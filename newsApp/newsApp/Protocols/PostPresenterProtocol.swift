@@ -1,0 +1,3 @@
+protocol PostPresenterProtocol {
+    func fetchNews()
+}
