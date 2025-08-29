@@ -44,12 +44,6 @@ class FirstViewController: UIViewController, PostViewProtocol {
                 ])
     }
     
-//    @objc private func didTapNextButton() {
-//        let secondViewController = SecondViewController()
-//
-//        navigationController?.pushViewController(secondViewController, animated: true)
-//    }
-    
     private func setupPresenter() {
         let networkService = NetworkService()
         presenter = PostPresenter(view: self, networkService: networkService)

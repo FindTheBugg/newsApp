@@ -14,10 +14,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
+        
         let secondVC = SecondViewController()
         let firstVC = FirstViewController()
         let thirdVC = ThirdViewController()
-        
+        let authVC = AuthViewController()
+        var isAuth = true
+    
         secondVC.tabBarItem = UITabBarItem(
             title: "Избранное",
             image: UIImage(systemName: "star.circle"),
@@ -39,15 +42,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let secondNav = UINavigationController(rootViewController: secondVC)
         let firstNav = UINavigationController(rootViewController: firstVC)
         let thirdNav = UINavigationController(rootViewController: thirdVC)
+        let authNav = UINavigationController(rootViewController: authVC)
         
         let tabBarController = UITabBarController()
+        
+        if isAuth == false {
+            window?.rootViewController = authNav
+        } else {
+            window?.rootViewController = tabBarController
+        }
         
         tabBarController.viewControllers = [secondNav, firstNav, thirdNav]
         tabBarController.selectedIndex = 1
         tabBarController.tabBar.tintColor = .systemBlue
         tabBarController.tabBar.unselectedItemTintColor = .gray
         
-        window?.rootViewController = tabBarController
+//        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
     
